@@ -1,0 +1,69 @@
+.my-app {
+    height: 100%;
+    .chat-widget {
+        position: relative;
+        top: 50%;
+        height: 80vh;
+        margin-top: -40vh;
+        .chat-container {
+            box-shadow: 5px 7px 1px 1px #d3d3d3;
+            border-radius: 5px;
+            border-left: 1px solid #d3d3d3;
+            height: 100%;
+            .chat-header {
+                background-color: skyblue;
+                text-align: center;
+                color: white;
+                height: 10vh;
+                font-size: 1rem;
+                padding-top: 3vh;
+            }
+            .messages-container {
+                overflow: auto;
+                padding: 5px;
+                padding-bottom: 0;   
+                height: 65vh;
+                .message-incoming {
+                    div {
+                        padding: 4px;
+                        margin-bottom: 10px;
+                        color: white;
+                        border-radius: 5px;
+                        width: fit-content;
+                    }
+                }
+                .message-outgoing {
+                    text-align: -webkit-right;
+                    div{
+                        padding: 4px;
+                        color: white;
+                        border-radius: 5px;
+                        margin-bottom: 10px;
+                        width: fit-content;
+                    }
+                }
+            }
+            .sender {
+                border-top: 1px solid gray;
+                border-radius: 5px;
+                height: 5vh;
+                padding: 3px;
+                outline: none;
+                input {
+                    border: none;
+                    height: 100%;
+                    width: 95%;
+                    display: inline-block;
+                }
+                input:focus {
+                    outline: none;
+                }
+                .icon {
+                    display: inline-block;
+                    font-size: 1.2rem;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}

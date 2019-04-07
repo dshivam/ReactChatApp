@@ -7,13 +7,15 @@ export default class Chat extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            userName: false,
+            userName: '',
             userColor: false,
+            input: '',
             history: []
         }
         this.onMessage = this.onMessage.bind(this);
         this.onSend = this.onSend.bind(this);
         this.onOpen = this.onOpen.bind(this);
+        this.onInput = this.onInput.bind(this);
     }
     componentDidMount() {
         connection.onopen = this.onOpen;
@@ -21,6 +23,11 @@ export default class Chat extends Component {
         connection.onmessage = this.onMessage;
         // this.onSend('Shivam');
         console.log('Component Mounted');
+    }
+    onInput(e) {
+        this.setState({
+            input: e.target.value
+        });
     }
     onError(error) {
             console.log('Sorry! Error While connection: '+error);
@@ -55,31 +62,22 @@ export default class Chat extends Component {
                 return;
         }
     }
-    // waitForConnection(callback, interval) {
-    //     if (connection.readyState === 1) {
-    //         callback();
-    //     } else {
-    //         var that = this;
-    //         setTimeout(() => {
-    //             that.waitForConnection(callback, interval)
-    //         }, interval);
-    //     }
-    // }
-    onSend(message) {
-        if (!message) {
+    
+    onSend() {
+        if (!this.state.input) {
             return;
         }
-        console.log(message);
+        console.log(this.state.input);
         console.log(connection);
-        // this.waitForConnection(() => {
-        //     window.connection.send(message);
-        // }, 1000);
-        window.connection.send(message);
+        window.connection.send(this.state.input);
         if (!this.state.userName) {
             this.setState({
-                userName: message
+                userName: this.state.input
             });
         }
+        this.setState({
+            input: ''
+        });
     }
     render() {
         return (
@@ -89,7 +87,8 @@ export default class Chat extends Component {
                         <Header data={this.state}/>
                         <Messages data={this.state}/>
                         <Sender 
-                        data={this.state}
+                        input={this.state.input}
+                        onInput={this.onInput}
                         onSend={this.onSend}/>
                     </div>
                 </div>

@@ -4,7 +4,7 @@ Follow these steps to run the application-
 
 1)- Running the Websocket Server
 
-    First of All Start the websocket server. Go inside ReactChatApp->src and run command node  websocket-server.js 
+    First of All Start the websocket server. Go inside ReactChatApp->src and run command - 'node websocket-server.js' 
 
 2)- Start the React Application
 
@@ -18,4 +18,4 @@ Follow these steps to run the application-
 
 3)- Browse the application in two different tabs and enter different usernames in Chat. 
 
-4)- Start Chatting
+4)- Start Chatting 
